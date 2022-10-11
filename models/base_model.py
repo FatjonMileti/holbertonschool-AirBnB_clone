@@ -1,17 +1,22 @@
 #!/usr/bin/python3
 """Task3 """
+from time import strptime
 from uuid import uuid4
 from datetime import datetime
+
 
 
 class BaseModel:
     """Super class, define by id, created_at, updated_at"""
     def __init__(self, *args, **kwargs):
-        if kwargs is not None:
+        if kwargs:
             for key,value in kwargs.items():
-                if key != '__class__':
-                    if key == 'updated_at' or key == 'created_at':
-                        setattr(self, key, strptime(value))
+                
+                if key == 'updated_at' or key == 'created_at':
+                    setattr(self, key, datetime.strptime(value, "%A %d %B %Y at %H:%M:%S"))
+                elif key == '__class__':
+                    setattr(self, key, type(self))
+                else:
                     setattr(self, key, value)
         else:
             self.id = str(uuid4())
