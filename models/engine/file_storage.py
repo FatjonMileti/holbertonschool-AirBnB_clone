@@ -15,4 +15,9 @@ class FileStorage:
         self.__objects[key]  = obj
 
     def save(self):
-        
+
+
+    def reload(self):
+        if path.exists(self.__file_path):
+            with open(self.__file_path, 'r', encoding='utf-8') as f:
+                json.loads(f.read())
