@@ -10,19 +10,23 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         key = self.__class__.__name__ + '.' + self.id
-        self.__objects[key]  = obj
+        FileStorage.__objects[key] = obj
 
     def save(self):
-        with open(self.__file_path, 'w', encoding='utf-8') as f:
-            f.write(json.dumps(self.__objects))
+        newdict = {}
+        for key, value in FileStorage.__objects.items():
+            newdict[key] = value.to_dict()
+        with open(FileStorage.__file_path, 'w') as f:
+            json.dump(newdict, f)
+
      
     def reload(self):
-        if path.exists(self.__file_path):
-            with open(self.__file_path) as f:
-                json_dict = json.loads(f.read())
-            for key, value in json_dict.items():
-                self.__object[key] = BaseModel(**value)
+        if path.exists(FileStorage.__file_path):
+            with open(FileStorage.__file_path) as f:
+                newdict = json.load(f)
+            for key, value in newdict.items():
+                 FileStorage.__objects[key] = BaseModel(**value)
