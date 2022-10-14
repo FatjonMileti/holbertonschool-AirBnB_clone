@@ -24,6 +24,7 @@ class FileStorage:
             json.dump(new_dict, f)
 
     def reload(self):
+        newdict =  {}
         if path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path) as f:
                 for key, value in (json.load(f)).items():
