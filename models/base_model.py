@@ -11,9 +11,9 @@ class BaseModel:
     """Super class, define by id, created_at, updated_at"""
     def __init__(self, *args, **kwargs):
         if kwargs:
-            for key,value in kwargs.items():
+            for key, value in kwargs.items():
                 if key == 'updated_at' or key == 'created_at':
-                    setattr(self, key, datetime.strptime(value, "%A %d %B %Y at %H:%M:%S"))
+                    setattr(self, key, datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
                 elif key == '__class__':
                     setattr(self, key, type(self))
                 else:
@@ -36,8 +36,13 @@ class BaseModel:
 
     def to_dict(self):
         """public method"""
-        d = dict(self.__dict__)
+        d = self.__dict__.copy()
         d['__class__'] = self.__class__.__name__
+<<<<<<< HEAD
         d['created_at'] = self.created_at.isoformat()
         d['updated_at'] = self.created_at.isoformat()
+=======
+        d['created_at'] = d['created_at'].isoformat()
+        d['updated_at'] = d['updated_at'].isoformat()
+>>>>>>> 4859f9d2bfc6c2c577c918bf86be1306f4532378
         return d
