@@ -25,6 +25,7 @@ class FileStorage:
 
      
     def reload(self):
+        newdict =  {}
         if path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path) as f:
                 newdict = json.load(f)

@@ -38,6 +38,6 @@ class BaseModel:
         """public method"""
         d = dict(self.__dict__)
         d['__class__'] = self.__class__.__name__
-        d['created_at'] = self.created_at.strftime("%A %d %B %Y at %H:%M:%S")
-        d['updated_at'] = self.created_at.strftime("%A %d %B %Y at %H:%M:%S")
+        d['created_at'] = self.created_at.isoformat()
+        d['updated_at'] = self.created_at.isoformat()
         return d
