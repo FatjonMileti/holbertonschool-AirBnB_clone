@@ -38,11 +38,6 @@ class BaseModel:
         """public method"""
         d = self.__dict__.copy()
         d['__class__'] = self.__class__.__name__
-<<<<<<< HEAD
-        d['created_at'] = self.created_at.isoformat()
-        d['updated_at'] = self.created_at.isoformat()
-=======
         d['created_at'] = d['created_at'].isoformat()
         d['updated_at'] = d['updated_at'].isoformat()
->>>>>>> 4859f9d2bfc6c2c577c918bf86be1306f4532378
         return d
