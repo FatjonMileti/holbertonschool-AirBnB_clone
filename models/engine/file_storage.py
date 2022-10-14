@@ -13,7 +13,7 @@ class FileStorage:
         return FileStorage.__objects
 
     def new(self, obj):
-        key = self.__class__.__name__ + '.' + self.id
+        key = obj.__class__.__name__ + '.' + obj.id
         self.__objects[key] = obj
         print("------------- fatjon ----------------")
 
