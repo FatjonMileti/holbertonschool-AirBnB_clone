@@ -39,5 +39,5 @@ class BaseModel:
         d = dict(self.__dict__)
         d['__class__'] = self.__class__.__name__
         d['created_at'] = self.created_at.isoformat()
-        d['updated_at'] = self.created_at.isoformat()
+        d['updated_at'] = self.updated_at.isoformat()
         return d
