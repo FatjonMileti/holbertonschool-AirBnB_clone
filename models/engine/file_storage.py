@@ -15,13 +15,11 @@ class FileStorage:
     def new(self, obj):
         key = obj.__class__.__name__ + '.' + obj.id
         self.__objects[key] = obj
-        print("------------- fatjon ----------------")
 
     def save(self):
         new_dict = {}
         for key in FileStorage.__objects:
             new_dict[key] = FileStorage.__objects[key].to_dict()
-            print(f"-----{new_dict}------")
         with open(self.__file_path, 'w') as f:
             json.dump(new_dict, f)
 
