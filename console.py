@@ -18,6 +18,11 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, line):
         return True 
 
+    def emptyline(self):
+        if self.lastcmd:
+            if self.lastcmd == "":
+                return self.onecmd('\n')
+
     def do_create(self, line):
         if len(line) == 0:
             print("** class name missing **")
