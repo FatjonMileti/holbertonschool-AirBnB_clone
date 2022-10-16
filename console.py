@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Console"""
 import cmd
 import models.base_model
 from models.engine.file_storage import FileStorage
@@ -6,7 +7,9 @@ from models import storage
 import json
 import gc
 
+
 class HBNBCommand(cmd.Cmd):
+    """class"""
     prompt = '(hbnb)'
 
     def do_quit(self, line):
